@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+		id : 객체명
+		class : 객체를 생성할 class 이름
+		scope : 객체의 범위
+			singleton : 하나의 객체만 생성
+			prototype : getBean 할때만 새로운 객체를 생성
+			request : web에서 request영역에 생성
+			session : web에서 session영역에 생성
+		lazy-init :
+			true : getBean 호출시 객체 생성
+			false : container 생성시 객체 생성
+		init-method : 객체 생성후 호출될 메소드 지정
+		destroy-method : 객체 소멸직전에 호출될 메소드 지정
+	 -->
+	<beans>
+		<bean class="com.ssafy.app.PersonImpl" id="person1"
+			scope="singleton" init-method="init" destroy-method="close">
+			<constructor-arg index="0" value="둘리"></constructor-arg>
+			<constructor-arg name="age" value="5"></constructor-arg>
+			<constructor-arg value="광주"></constructor-arg>
+		</bean>
+		<bean class="com.ssafy.app.PersonImpl" id="person2"
+			scope="singleton" init-method="init" destroy-method="close">
+			<constructor-arg index="0" value="또치"></constructor-arg>
+			<constructor-arg name="age" value="7"></constructor-arg>
+			<constructor-arg value="대전"></constructor-arg>
+		</bean>
+		<bean class="com.ssafy.app.MemberImpl2" id="member" scope="singleton">
+			<constructor-arg name="num" value="0109991111"></constructor-arg>
+			<constructor-arg name="p" ref="person2"></constructor-arg>
+			<constructor-arg name="hobby">
+				<list>
+					<value>낚시</value>
+					<value>독서</value>
+				</list>
+			</constructor-arg>
+			<property name="num" value="99999999"></property>
+		</bean>
+	</beans>
+</beans>

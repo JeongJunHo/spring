@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="applephone" class="com.ssafy.product.ApplePhone">
+		<constructor-arg name="price" value="100"></constructor-arg>
+		<constructor-arg name="camera" ref="cannoncamera"></constructor-arg>
+		<constructor-arg name="algo" ref="dp"></constructor-arg>
+	</bean>
+	<bean id="samsungphone" class="com.ssafy.product.GalaxyFold">
+		<property name="price" value="250"></property>
+		<property name="algo" ref="recursive"></property>
+		<property name="camera" ref="samsungcamera"></property>
+	</bean>
+	<bean id="cannoncamera" class="com.ssafy.product.CanonCamera">
+	</bean>
+	<bean id="samsungcamera" class="com.ssafy.product.SamsungCamera">
+	</bean>
+	<bean id="recursive" class="com.ssafy.product.Recursive">
+	</bean>
+	<bean id="dp" class="com.ssafy.product.DP">
+	</bean>
+</beans>

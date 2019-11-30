@@ -1,0 +1,9 @@
+create database product;
+use product;
+create table product(
+	id varchar(30),
+    name varchar(30),
+    price int,
+    description varchar(300),
+    constraint product_pk primary key(id)
+);
